@@ -75,7 +75,7 @@ for ep in range(episodes):
     epsilon = max(epsilon * epsilon_decay, epsilon_min)
 
     if (ep + 1) % 10 == 0:
-        print(f"ep {ep}, reward: {total_reward:.2f}, Epsilon: {epsilon:.3f}")
+        print(f"progresssssssss!: {ep}/{episodes}")
 
 env.close()
 #env = gym.make("FrozenLake-v1", is_slippery=False, render_mode="human")
