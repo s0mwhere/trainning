@@ -1,6 +1,5 @@
 basic drl/__pycache__
 gym_test/__pycache__
 gym_test/checkenv.py
-gym_test/eval_env.py
 gym_test/test_space.py
 gym_test/test.py
