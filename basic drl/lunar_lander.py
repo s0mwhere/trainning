@@ -9,7 +9,7 @@ n_states = 8
 n_actions = 4
 
 #--const-----------
-episodes = 500
+episodes = 1000
 max_steps = 1000
 
 gamma = 0.99
@@ -24,6 +24,8 @@ memory = deque(maxlen=100000)
 #------------------
 
 dqn = DQN(n_states, hidden_dim, n_actions, learn_rate)
+
+episode_reward = []
 
 # Training
 for ep in range(episodes):
@@ -71,11 +73,20 @@ for ep in range(episodes):
 
         if done:
             break
+    
+    #logging
+    episode_reward.append(total_reward)
 
+    #epsilon decay
     epsilon = max(epsilon * epsilon_decay, epsilon_min)
 
+    #insanity check
     if (ep + 1) % 10 == 0:
         print(f"progresssssssss!: {ep}/{episodes}")
+
+with open("basic drl/rewards.txt", "w") as f:
+    for r in episode_reward:
+        f.write(f"{r}\n")
 
 env.close()
 #env = gym.make("FrozenLake-v1", is_slippery=False, render_mode="human")
